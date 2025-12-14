@@ -8,9 +8,9 @@ interface Project {
   description: string;
   tech: string[];
   category: string;
-  demoUrl?: string; // URL to your project (can be local or external)
-  sourceUrl?: string; // GitHub or source code URL
-  thumbnail?: string; // Optional thumbnail image
+  demoUrl?: string;
+  sourceUrl?: string;
+  thumbnail?: string;
 }
 
 function App() {
@@ -27,8 +27,6 @@ function App() {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  // REPLACE THESE WITH YOUR ACTUAL PROJECTS
-  // Add your project URLs in the demoUrl field (can be relative paths like '/projects/project1/index.html' or external URLs)
   const projects: Project[] = [
     {
       id: 1,
@@ -63,18 +61,6 @@ function App() {
       sourceUrl: "https://github.com/WaltteriWe/webgl-peli",
       thumbnail: "./public/thumbnails/stacker-thumb.png",
     },
-
-    // ADD YOUR PROJECTS BELOW - Copy this template and fill in your details:
-    // {
-    //   id: 2,
-    //   title: "Your Project Name",
-    //   description: "Description of your AR/VR experience",
-    //   tech: ["Three.js", "WebXR", "React"], // Technologies used
-    //   category: "AR", // AR, VR, or MR
-    //   demoUrl: "/projects/your-project-folder/index.html", // Path to your project
-    //   sourceUrl: "https://github.com/yourusername/project", // Optional
-    //   thumbnail: "/thumbnails/your-project.jpg" // Optional
-    // },
   ];
 
   const openProjectModal = (project: Project) => {
@@ -140,11 +126,19 @@ function App() {
               experiences.
             </p>
             <div className="hero-buttons">
-              <button className="btn btn-primary">View Projects</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  const projectsSection = document.getElementById("projects");
+                  projectsSection?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                View Projects
+              </button>
             </div>
           </div>
           <div className="hero-visual">
-            <ModelViewer modelPath="/lego_batman.glb" />
+            <ModelViewer modelPath="./public/lego_batman.glb" />
           </div>
         </div>
       </section>
